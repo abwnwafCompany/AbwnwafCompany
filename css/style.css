@@ -1,0 +1,296 @@
+* {
+	font-family: 'Cairo', sans-serif; 
+}
+body {
+	background: #f1fbff;
+}
+.section-padding {
+	padding: 100px 10px;
+}
+.carousel-item {
+	height: 100vh;
+	min-height: 300px;
+}
+.carousel-caption {
+	bottom:220px;
+	z-index: 2;
+}
+.carousel-caption h5 {
+	font-size:40px;
+	text-transform: uppercase;
+	margin-top: 25px;
+	font-weight: 900;
+}
+.carousel-caption p {
+	width: 60%;
+	margin: auto;
+	font-size: 18px;
+	line-height: 1.9;
+}
+
+.carousel-inner:before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 1;
+}
+
+.navbar-nav a {
+	font-size:15px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+/* خاص بال logo اذا كان نص */
+/*
+.navbar-light .navbar-brand {
+	font-size: 25px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+*/
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+	color: #000;
+}
+.navbar-light .navbar-nav .nav-link {
+	color: #000;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color: #000;
+}
+.w-100 {
+	height: 100vh;
+}
+.navbar-toggler {
+	padding: 1px 5px;
+	font-size: 18px;
+	line-height: 0.3;
+	background: #fff;
+}
+
+
+/*services start style*/
+.services .card .icon{
+	font-size:3rem;
+	color:lightseagreen;
+	}
+	
+	.services .card-text{
+	color: grey;
+	}
+	
+	.services .card:hover{
+	background-color:lightseagreen;
+	color:#fff;
+	}
+	
+	.services .card{
+	transition:all 0.5s;
+	cursor: pointer;
+	flex-direction: row;
+	direction: rtl;
+	}
+	
+/*end services style*/
+
+
+/*scroll buttom start*/
+div.btn-services-scroll {
+	border: 1px solid #ffffff;
+	background-color:#ffffff;
+	margin:0 10px 0 10px;
+	overflow: auto;
+	white-space: nowrap;
+	direction: rtl;
+  }
+  
+  div.btn-services-scroll a {
+	background-color:#ffffff;
+	cursor: pointer;
+	display: inline-block;
+	padding: 8px 10px;
+	transition: 0.3s;
+	margin:5px;
+	border-radius:20px 0px 20px 0px;
+	border: 0.5px solid;
+	font-size:1rem;
+	color:#66757f;
+	text-decoration:none;
+  }
+  div.btn-services-scroll a:hover {
+	background-color:lightseagreen;
+	color: #ffffff;
+  }
+  
+  div.btn-services-scroll {
+  transition:all 0.5s;
+  }
+  
+  
+  
+  div.btn-services-scroll::-webkit-scrollbar {
+  background-color: #ffffff;
+  }
+
+/* end scroll button*/
+
+
+
+/* swiper start main*/
+
+/*swiper*/
+.slider-wrapper {
+	overflow: hidden;
+	max-width: 1200px;
+	margin: 0 50px 55px;
+	height:400px;
+  }
+  
+  
+  .card-list .card-item {
+	height: auto;
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	align-items: right;
+	justify-content:flex-start;
+	border-radius: 15px;
+	backdrop-filter: blur(30px);
+	background:#fff;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  
+
+  
+  @media (max-width: 768px) {
+	.slider-wrapper {
+	  margin: 0 10px 40px;
+	}
+  .section-padding {
+padding: 100px 3px;
+}
+	.slider-wrapper .swiper-slide-button {
+	  display: none;
+	}
+  }
+  
+/*end swiper main*/  
+
+
+/* start activity swiper*/
+/* activity */
+.review {
+	width: 100%;
+	background-color: #fefcfc;
+  }
+  .review .main {
+	max-width: 1200px;
+	padding: 40px 20px;
+	z-index: 9;
+	text-align: center;
+	margin: auto;
+	cursor: pointer;
+  }
+  
+  .review .card {
+	background-color: lightseagreen;
+	color:black;
+	padding: 3em 0;
+	border: 0;
+	border-radius: 4em 0;
+	background: linear-gradient(to left, white 50%, rgb(239, 250, 249) 50%);
+	background-size: 200%;
+	background-position: right;
+	transition: all .5s;
+	box-shadow: 0 10px 30px rgba(252, 248, 248, 0.8); /* زيادة العمق والتوهج */
+	max-height:fit-content;
+  }
+  
+  .review .card:hover{
+  background-position:left;
+  }
+  
+  .review .card .card-title{
+  font-size:1.2rem;
+  }
+  
+  .review .card .card-text{
+  font-size:1rem;
+  }
+
+/* end activity swiper*/
+
+
+/* start news swiper*/
+.blogs .main {
+	max-width: 1200px;
+	padding: 40px 20px;
+	z-index: 9;
+	margin: auto;
+	cursor: pointer;
+	  }
+	
+	.blogs .card-list .card-item {
+	direction: rtl;
+	}
+	
+	.blogs .card .card-title{
+	font-size:1.2rem;
+	}
+	
+	.blogs .card .card-text{
+	font-size:1rem;
+	}
+	
+	.blogs .card-list .card-item .card-text{
+	display: -webkit-box;
+	-webkit-line-clamp:3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	}
+/* end news swiper*/
+	
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.carousel-caption {
+		bottom: 370px;
+	}
+	.carousel-caption p {
+		width: 100%;
+	}
+	.card {
+		margin-bottom: 20px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.navbar-nav {
+		text-align: center;
+	}
+	.carousel-caption {
+		bottom: 200px;
+	}
+	.carousel-caption h5 {
+		font-size:35px;
+		font-weight: 900;
+	}
+	.carousel-caption a {
+		padding: 10px 15px;
+		font-size: 15px;
+	}
+	.carousel-caption p {
+		width: 100%;
+		line-height: 1.6;
+		font-size: 12px;
+	}
+	.about-text {
+		padding-top: 50px;
+	}
+}
