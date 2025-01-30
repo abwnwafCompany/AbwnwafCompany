@@ -810,6 +810,28 @@ function open_ser(evt, cityName) {
 </script>
 
 <script>
+
+  const accessToken = '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';
+  const repoOwner = 'abwnwafCompany';
+  const repoName = 'AbwnwafCompany';
+
+  // دالة لتحميل البيانات من GitHub
+  async function loadData(filePath) {
+    const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
+    const headers = {
+      'Authorization': `token ${accessToken}`,
+      'Accept': 'application/vnd.github.v3.raw',
+    };
+
+    try {
+      const response = await fetch(apiUrl, { headers });
+      return await response.json();
+    } catch (error) {
+      console.error('حدث خطأ في تحميل البيانات:', error);
+      return [];
+    }
+  }
+
   // دالة لتحميل البيانات الخاصة بالسلايدر (الخدمات)
   async function loadSliderData() {
     const data = await loadData('services.json');
