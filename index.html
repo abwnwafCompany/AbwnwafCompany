@@ -810,27 +810,6 @@ function open_ser(evt, cityName) {
 </script>
 
 <script>
-  const accessToken = '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';
-  const repoOwner = 'EngFaisal101';
-  const repoName = 'Abu_Nasear_company';
-
-  // دالة لتحميل البيانات من GitHub
-  async function loadData(filePath) {
-    const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
-    const headers = {
-      'Authorization': `token ${accessToken}`,
-      'Accept': 'application/vnd.github.v3.raw',
-    };
-
-    try {
-      const response = await fetch(apiUrl, { headers });
-      return await response.json();
-    } catch (error) {
-      console.error('حدث خطأ في تحميل البيانات:', error);
-      return [];
-    }
-  }
-
   // دالة لتحميل البيانات الخاصة بالسلايدر (الخدمات)
   async function loadSliderData() {
     const data = await loadData('services.json');
