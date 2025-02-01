@@ -155,7 +155,7 @@
   <script>
     async function loadBlogDetails() {
       try {
-        const response = await fetch('services.json');
+        const response = await fetch('header_item.json');
       const data = await response.json();
         const urlParams = new URLSearchParams(window.location.search);
         const index = parseInt(urlParams.get('index'), 10);
