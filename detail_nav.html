@@ -68,25 +68,6 @@
       background-color: #e68900;
     }
 
-    /* تنسيق قائمة التنقل */
-    .navbar {
-      background-color: #333;
-      padding: 15px;
-    }
-
-    .navbar a {
-      color: white;
-      padding: 10px 15px;
-      text-decoration: none;
-      margin-right: 10px;
-      font-size: 1.1rem;
-    }
-
-    .navbar a:hover {
-      background-color: #ff9900;
-      border-radius: 5px;
-    }
-
     /* استخدام Flexbox لعرض الصور جنبًا إلى جنب */
     #image-cards-container {
       display: flex;
@@ -128,13 +109,22 @@
 </head>
 <body>
 
-  <!-- قائمة التنقل -->
-  <nav class="navbar">
-    <a href="index.html">الرئيسية</a>
-    <a href="#">المدونات</a>
-    <a href="#">تفاصيل الخدمة</a>
-  </nav>
-
+ <section class="services bg-white" id="services" dir="rtl">
+<div class="container-fluid py-5">
+<div class="text-end p-4 mb-10" style="margin-top:40px;">
+<h4 class="text-secondary fw-bold">كل الخدمات</h4>
+<!-- Nav pills -->
+<ul class="nav nav-tabs mt-5">
+  <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئسية</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="">كل الخدمات</a>
+  </li>
+</ul>
+</div>
+</div>
+</section>
   <div id="blog-detail-container" dir="rtl">
     <!-- محتوى الخدمة سيظهر هنا -->
   </div>
