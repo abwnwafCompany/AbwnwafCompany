@@ -918,7 +918,7 @@ function open_ser(evt, cityName) {
           listItem.classList.add('nav-item');
           const link = document.createElement('a');
           link.classList.add('nav-link', 'text-white');
-          link.href = `detail_nav.html?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&image=${encodeURIComponent(item.image)}`;
+          link.href =`detail_nav.html?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&image=${encodeURIComponent(item.image)}`;
           link.textContent = item.title;
           listItem.appendChild(link);
           navbarItemsContainer.appendChild(listItem);
@@ -929,7 +929,7 @@ function open_ser(evt, cityName) {
         dropdownItem.classList.add('nav-item', 'dropdown');
         const dropdownLink = document.createElement('a');
         dropdownLink.classList.add('nav-link', 'dropdown-toggle', 'text-white');
-        dropdownLink.href = '#';
+        dropdownLink.href = '#nn';
         dropdownLink.id = 'navbarDropdown';
         dropdownLink.setAttribute('role', 'button');
         dropdownLink.setAttribute('data-bs-toggle', 'dropdown');
@@ -977,7 +977,7 @@ function open_ser(evt, cityName) {
           blogCard.innerHTML = `
             <h6 class="text-dark">${item.title}</h6>
             <p>${item.description}</p>
-            <a href="#" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
+            <a href="#hg" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
           `;
           blogCardsContainer.appendChild(blogCard);
 
