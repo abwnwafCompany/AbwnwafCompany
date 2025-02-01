@@ -166,7 +166,7 @@
 
           blogDetailContainer.innerHTML = 
           `<div class="blog-image-container">
-            <img src="${data.image || 'img/five.jpg'}" alt="صورة المقال">
+            <img src="${data.image || 'img/five.jpg'}" alt="ابو نواف للدهانات وجميع انواع الديكورات">
             <h1 class="blog-title">${data.title || 'عنوان المقال'}</h1>
             <!-- شريط التنقل داخل الصورة -->
             <ul class="nav nav-tabs mt-5" dir="rtl">
@@ -174,12 +174,12 @@
                 <a class="nav-link active" data-bs-toggle="tab" href="index.html">الرئسية</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="">${data.title || 'عنوان المقال'}</a>
+                <a class="nav-link" data-bs-toggle="tab" href="">${data.title || 'عنوان الخدمة'}</a>
               </li>
             </ul>
           </div>
           <div class="blog-content" dir="rtl">
-            <h3> ${data.title || 'عنوان المقال'}:</h3>
+            <h3> ${data.title || 'عنوان الخدمة'}:</h3>
             <p>${data.description || 'الوصف غير متوفر'}</p>
           </div>`;
         } else {
@@ -213,7 +213,7 @@
     </div>
     
     <!-- الصورة في الجهة اليمنى -->
-    <img src="${item.image}" alt="صورة المقال" class="img-fluid rounded" style="width: 120px; height: 120px; object-fit: cover;"/>
+    <img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded" style="width: 120px; height: 120px; object-fit: cover;"/>
   </div>`;
             blogCardsContainer.appendChild(blogCard);
 
