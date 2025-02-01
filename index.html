@@ -364,7 +364,21 @@ display:none;
   #image-cards-container .col-md-6 {
     flex: 0 0 48%; /* تأخذ 48% من العرض في كل صف */
   }
-  
+
+    /* إضافة كلاس لجعل الصور متجاوبة */
+.responsive-img {
+  width: 100%; /* عرض الصورة 100% من عرض الحاوية */
+  height: auto; /* الحفاظ على النسبة الأصلية للصورة */
+}
+
+/* استخدام @media لتغيير تنسيق الصورة على الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .responsive-img {
+    width: 100% !important; /* تعيين العرض 100% على الشاشات الصغيرة */
+    height: auto !important; /* الحفاظ على النسبة الأصلية للصورة */
+  }
+}
+
 </style>
 </head>
 <body>
@@ -971,7 +985,7 @@ async function loadBlogData() {
     }
   }
 
-  // دالة لتحميل المحتوى المترابط
+// دالة لتحميل المحتوى المترابط
 async function loadRelatedContent() {
   try {
     const response = await fetch('blogs.json');
@@ -1002,7 +1016,7 @@ async function loadRelatedContent() {
 
         const imageCard = document.createElement('div');
         imageCard.classList.add('col-md-6', 'mb-4');
-        imageCard.innerHTML = `<a href="${item.image}" target="_blank"><img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded" style="cursor: pointer;"></a>`;
+        imageCard.innerHTML = `<a href="${item.image}" target="_blank"><img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded responsive-img" style="cursor: pointer;"></a>`;
         imageCardsContainer.appendChild(imageCard);
       });
     }
