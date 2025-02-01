@@ -127,23 +127,6 @@
   </style>
 </head>
 <body>
-  <!-- شريط التنقل داخل الصورة -->
-  <section class="services bg-white" id="services" dir="rtl">
-    <div class="container-fluid py-5">
-      <div class="text-end p-4 mb-10" style="margin-top:40px;">
-        <!-- Nav pills -->
-        <ul class="nav nav-tabs mt-5">
-          <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئسية</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="">كل الخدمات</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <div id="blog-detail-container" dir="rtl">
     <!-- محتوى الخدمة سيظهر هنا -->
   </div>
@@ -194,14 +177,13 @@
                 <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئسية</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="">كل الخدمات</a>
+                <a class="nav-link" data-bs-toggle="tab" href="">${params.title || 'عنوان الخدمة'}</a>
               </li>
             </ul>
           </div>
           <div class="blog-content">
             <h3>تفاصيل الخدمة:</h3>
             <p>${params.description || 'الوصف غير متوفر'}</p>
-            <button class="back-btn" onclick="window.history.back()">العودة إلى القائمة</button>
           </div>`;
       } else {
         console.error('البيانات مفقودة أو غير صحيحة.');
