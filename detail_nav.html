@@ -66,6 +66,18 @@
     .back-btn:hover {
       background-color: #e68900;
     }
+
+     /* استخدام Flexbox لعرض الصور جنبًا إلى جنب */
+ #image-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* يسمح باللف إذا كانت العناصر أكبر من الحاوية */
+    gap: 15px; /* المسافة بين الصور */
+  }
+
+  /* التأكد من أن الصورة تأخذ نصف العرض */
+  #image-cards-container .col-md-6 {
+    flex: 0 0 48%; /* تأخذ 48% من العرض في كل صف */
+  }
   </style>
 </head>
 <body>
