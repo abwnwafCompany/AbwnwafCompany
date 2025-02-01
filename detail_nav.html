@@ -4,12 +4,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تفاصيل الخدمة</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- إضافة رابط للخط "Cairo" من Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+  <!-- إضافة رابط للخط "Cairo" من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
   <style>
-  * {
-	font-family: 'Cairo', sans-serif; 
-}
+    * {
+      font-family: 'Cairo', sans-serif; 
+    }
     /* تنسيق الصورة في القسم العلوي */
     .blog-image-container {
       position: relative;
@@ -92,16 +92,9 @@
       background-color: #e68900;
     }
 
-    /* استخدام Flexbox لعرض الصور جنبًا إلى جنب */
+    /* إزالة الجهة اليمنى الخاصة بالصور في المحتوى المترابط */
     #image-cards-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    /* التأكد من أن الصورة تأخذ نصف العرض */
-    #image-cards-container .col-md-6 {
-      flex: 0 0 48%; /* تأخذ 48% من العرض في كل صف */
+      display: none; /* إخفاء الصور */
     }
 
     /* تنسيق المحتوى في الجزء "قد يهمك" مع عرض الصورة بجانب النص */
@@ -129,9 +122,15 @@
       margin-bottom: 20px;
     }
 
+    /* توسيع الجهة اليسرى لتأخذ عرض الشاشة كامل */
+    .col-lg-6 {
+      flex: 0 0 100%; /* جعل المحتوى في الجهة اليسرى يأخذ عرض الشاشة بالكامل */
+    }
+
   </style>
 </head>
 <body>
+
   <div id="blog-detail-container" dir="rtl">
     <!-- محتوى الخدمة سيظهر هنا -->
   </div>
@@ -140,15 +139,15 @@
   <section id="related-content" class="py-5 bg-white">
     <div class="container">
       <div class="row">
-        <!-- الجزء الأيسر: نص "قد يهمك" في الجهة اليمنى من المحتوى الأيسر -->
-        <div class="col-lg-6 col-md-12 d-flex flex-column align-items-end">
+        <!-- الجزء الأيسر: نص "قد يهمك" في الجهة اليسرى من المحتوى -->
+        <div class="col-lg-12 col-md-12 d-flex flex-column align-items-end">
           <h3>قد يهمك</h3> <!-- النص الذي ترغب في عرضه -->
           <div id="blog-cards-container">
             <!-- المقالات سيتم تحميلها هنا -->
           </div>
         </div>
 
-        <!-- الجزء الأيمن: صور قابلة للعرض عند الضغط عليها -->
+        <!-- إخفاء الجزء الأيمن الذي يحتوي على الصور -->
         <div class="col-lg-6 col-md-12" id="image-cards-container">
           <!-- الصور سيتم تحميلها هنا -->
         </div>
@@ -182,7 +181,7 @@
                 <a class="nav-link active" data-bs-toggle="tab" href="index.html">الرئسية</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="">${params.title || 'عنوان الخدمة'}</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#">${params.title || 'عنوان الخدمة'}</a>
               </li>
             </ul>
           </div>
@@ -195,58 +194,51 @@
       }
     }
 
- // دالة لتحميل المحتوى المترابط
-async function loadRelatedContent() {
-  try {
-    const response = await fetch('blogs.json');
-    const data = await response.json();
+    // دالة لتحميل المحتوى المترابط
+    async function loadRelatedContent() {
+      try {
+        const response = await fetch('blogs.json');
+        const data = await response.json();
 
-    if (Array.isArray(data)) {
-      const firstFourItems = data.slice(0, 4);
-      const blogCardsContainer = document.getElementById('blog-cards-container');
-      const imageCardsContainer = document.getElementById('image-cards-container');
-      
-      const maxLength = 100; // الحد الأقصى لعدد الأحرف لكل سطر (يمكنك تعديله)
+        if (Array.isArray(data)) {
+          const firstFourItems = data.slice(0, 4);
+          const blogCardsContainer = document.getElementById('blog-cards-container');
+          
+          const maxLength = 100; // الحد الأقصى لعدد الأحرف لكل سطر (يمكنك تعديله)
 
-      firstFourItems.forEach((item, index) => {
-        const blogCard = document.createElement('div');
-        blogCard.classList.add('related-card');
-        
-        // تقليص النص إلى سطرين فقط
-        let description = item.description || 'وصف غير متوفر';
-        if (description.length > maxLength) {
-          description = description.substring(0, maxLength) + '...';
-        }
-        
-        blogCard.innerHTML = `
-          <div class="d-flex align-items-center">
-            <!-- النص في الجهة اليسرى -->
-            <div class="card-body">
-              <h6>${item.title}</h6>
-              <p>${description}</p>
-              <a href="#nn" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
-            </div>
+          firstFourItems.forEach((item, index) => {
+            const blogCard = document.createElement('div');
+            blogCard.classList.add('related-card');
             
-            <!-- الصورة في الجهة اليمنى -->
-            <img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded" style="width: 120px; height: 120px; object-fit: cover;"/>
-          </div>`;
-        
-        blogCardsContainer.appendChild(blogCard);
-
-        const imageCard = document.createElement('div');
-        imageCard.classList.add('col-md-6', 'mb-4');
-        imageCard.innerHTML = `<a href="${item.image}" target="_blank"><img src="${item.image}" class="img-fluid rounded" style="cursor: pointer;"></a>`;
-        imageCardsContainer.appendChild(imageCard);
-      });
+            // تقليص النص إلى سطرين فقط
+            let description = item.description || 'وصف غير متوفر';
+            if (description.length > maxLength) {
+              description = description.substring(0, maxLength) + '...';
+            }
+            
+            blogCard.innerHTML = `
+              <div class="d-flex align-items-center">
+                <!-- النص في الجهة اليسرى -->
+                <div class="card-body">
+                  <h6>${item.title}</h6>
+                  <p>${description}</p>
+                  <a href="#nn" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
+                </div>
+              </div>`;
+            
+            blogCardsContainer.appendChild(blogCard);
+          });
+        }
+      } catch (error) {
+        console.error("خطأ في تحميل المحتوى المترابط:", error);
+      }
     }
-  } catch (error) {
-    console.error("خطأ في تحميل المحتوى المترابط:", error);
-  }
-}
-     // دالة لعرض تفاصيل المقالة
-  function showBlogDetails(index) {
-    window.location.href = `blog-detail.html?index=${index}`;
-  }
+
+    // دالة لعرض تفاصيل المقالة
+    function showBlogDetails(index) {
+      window.location.href = `blog-detail.html?index=${index}`;
+    }
+
     window.onload = function() {
       loadServiceDetails();
       loadRelatedContent();
