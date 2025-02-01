@@ -843,34 +843,43 @@ function open_ser(evt, cityName) {
   }
 
 
-  // دالة لتحميل البيانات الخاصة بالمقالات
-  async function loadBlogData() {
-    try {
-      const response = await fetch('blogs.json');
-      const data = await response.json();
+ // دالة لتحميل البيانات الخاصة بالمقالات
+async function loadBlogData() {
+  try {
+    const response = await fetch('blogs.json');
+    const data = await response.json();
 
-      if (Array.isArray(data)) {
-        const blogContent = document.getElementById('blog-content');
-        data.forEach((item, index) => {
-          const article = document.createElement('div');
-          article.classList.add('swiper-slide', 'card', 'p-4');
-          article.setAttribute('data-aos', 'fade-up');
-          article.innerHTML = `
-            <img src="${item.image || 'img/four.jpg'}"  style="height:170px;width:170px;">
-            <div class="card-body">
-              <h3 class="card-title">${item.title || 'عنوان المقالة غير موجود'}</h3>
-              <p class="card-text">${item.description || 'وصف المقالة غير موجود'}</p>
-              <i class="bi bi-arrow-left-circle" style="color: blue; margin-right:10px;" onclick="showBlogDetails(${index})"></i>
-            </div>
-          `;
-          blogContent.appendChild(article);
-        });
-        initializeSwiper('.slider-wrapper');
-      }
-    } catch (error) {
-      console.error("خطأ في تحميل بيانات المقالات:", error);
+    if (Array.isArray(data)) {
+      const blogContent = document.getElementById('blog-content');
+      const maxLength = 200; // الحد الأقصى لعدد الأحرف لكل سطر (يمكنك تعديل هذا حسب الحاجة)
+      
+      data.forEach((item, index) => {
+        const article = document.createElement('div');
+        article.classList.add('swiper-slide', 'card', 'p-4');
+        article.setAttribute('data-aos', 'fade-up');
+
+        // تقليص النص الوصفي إذا كان أطول من الحد المحدد
+        let description = item.description || 'وصف المقالة غير موجود';
+        if (description.length > maxLength) {
+          description = description.substring(0, maxLength) + '...';
+        }
+
+        article.innerHTML = `
+          <img src="${item.image || 'img/four.jpg'}" style="height:170px;width:170px;">
+          <div class="card-body">
+            <h3 class="card-title">${item.title || 'عنوان المقالة غير موجود'}</h3>
+            <p class="card-text">${description}</p>
+            <i class="bi bi-arrow-left-circle" style="color: blue; margin-right:10px;" onclick="showBlogDetails(${index})"></i>
+          </div>
+        `;
+        blogContent.appendChild(article);
+      });
+      initializeSwiper('.slider-wrapper');
     }
+  } catch (error) {
+    console.error("خطأ في تحميل بيانات المقالات:", error);
   }
+}
 
   // دالة لتهيئة الـ Swiper
   function initializeSwiper(selector) {
@@ -963,36 +972,44 @@ function open_ser(evt, cityName) {
   }
 
   // دالة لتحميل المحتوى المترابط
-  async function loadRelatedContent() {
-    try {
-      const response = await fetch('blogs.json');
-      const data = await response.json();
+async function loadRelatedContent() {
+  try {
+    const response = await fetch('blogs.json');
+    const data = await response.json();
 
-      if (Array.isArray(data)) {
-        const firstFourItems = data.slice(0, 4);
-        const blogCardsContainer = document.getElementById('blog-cards-container');
-        const imageCardsContainer = document.getElementById('image-cards-container');
+    if (Array.isArray(data)) {
+      const firstFourItems = data.slice(0, 4);
+      const blogCardsContainer = document.getElementById('blog-cards-container');
+      const imageCardsContainer = document.getElementById('image-cards-container');
 
-        firstFourItems.forEach((item, index) => {
-          const blogCard = document.createElement('div');
-          blogCard.classList.add('blog-card', 'mb-4', 'text-end');
-          blogCard.innerHTML = `
-            <h6 class="text-dark">${item.title}</h6>
-            <p>${item.description}</p>
-            <a href="#hg" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
-          `;
-          blogCardsContainer.appendChild(blogCard);
+      firstFourItems.forEach((item, index) => {
+        const blogCard = document.createElement('div');
+        blogCard.classList.add('blog-card', 'mb-4', 'text-end');
+        
+        // تقليص النص إلى سطرين فقط
+        const maxLength = 200; // الحد الأقصى لعدد الأحرف (افتراضيًا 200 حرف لكل سطر)
+        let description = item.description;
+        if (description.length > maxLength) {
+          description = description.substring(0, maxLength) + '...';
+        }
 
-          const imageCard = document.createElement('div');
-          imageCard.classList.add('col-md-6', 'mb-4');
-          imageCard.innerHTML = `<a href="${item.image}" target="_blank"><img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded" style="cursor: pointer;"></a>`;
-          imageCardsContainer.appendChild(imageCard);
-        });
-      }
-    } catch (error) {
-      console.error("خطأ في تحميل المحتوى المترابط:", error);
+        blogCard.innerHTML = `
+          <h6 class="text-dark">${item.title}</h6>
+          <p>${description}</p>
+          <a href="#hg" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
+        `;
+        blogCardsContainer.appendChild(blogCard);
+
+        const imageCard = document.createElement('div');
+        imageCard.classList.add('col-md-6', 'mb-4');
+        imageCard.innerHTML = `<a href="${item.image}" target="_blank"><img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded" style="cursor: pointer;"></a>`;
+        imageCardsContainer.appendChild(imageCard);
+      });
     }
+  } catch (error) {
+    console.error("خطأ في تحميل المحتوى المترابط:", error);
   }
+}
 
   // دالة لتحميل معلومات التواصل
   async function loadContactInfo() {
