@@ -865,7 +865,7 @@ async function loadBlogData() {
         }
 
         article.innerHTML = `
-          <img src="${item.image || 'img/four.jpg'}" style="height:170px;width:170px;">
+          <img src="${item.image || 'img/four.jpg'}" style="height:170px;width:100%;">
           <div class="card-body">
             <h3 class="card-title">${item.title || 'عنوان المقالة غير موجود'}</h3>
             <p class="card-text">${description}</p>
