@@ -364,6 +364,9 @@ display:none;
   #image-cards-container .col-md-6 {
     flex: 0 0 48%; /* تأخذ 48% من العرض في كل صف */
   }
+.zz {
+  text-decoration: none;  /* إزالة الخط تحت الرابط */
+}
 
     /* إضافة كلاس لجعل الصور متجاوبة */
 .responsive-img {
@@ -379,6 +382,7 @@ display:none;
   }
 }
 
+    
 </style>
 </head>
 <body>
@@ -840,7 +844,7 @@ function open_ser(evt, cityName) {
             <img src="${item.image || 'img/five.jpg'}" alt="ابو نواف للدهانات وجميع انواع الديكورات" width="200px" height="200px" class="img-fluid rounded-circle custom-img">
             <div class="card-body">
               <h3 class="card-title py-2">
-                <a href="detail_nav.html?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&image=${encodeURIComponent(item.image)}" class="bg-warning text-white">
+                <a href="detail_nav.html?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&image=${encodeURIComponent(item.image)}" class="btn bg-warning text-white p-2 zz">
                   ${item.title || 'اسم الخدمة غير موجود'}
                 </a>
               </h3>
