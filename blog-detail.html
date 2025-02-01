@@ -166,21 +166,21 @@
 
           blogDetailContainer.innerHTML = 
           `<div class="blog-image-container">
-            <img src="${params.image || 'img/five.jpg'}" alt="صورة الخدمة">
-            <h1 class="blog-title">${params.title || 'عنوان الخدمة'}</h1>
+            <img src="${data.image || 'img/five.jpg'}" alt="صورة الخدمة">
+            <h1 class="blog-title">${data.title || 'عنوان الخدمة'}</h1>
             <!-- شريط التنقل داخل الصورة -->
             <ul class="nav nav-tabs mt-5">
               <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئسية</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="">${params.title || 'عنوان الخدمة'}</a>
+                <a class="nav-link" data-bs-toggle="tab" href="">${data.title || 'عنوان الخدمة'}</a>
               </li>
             </ul>
           </div>
           <div class="blog-content">
-            <h3> ${params.title || 'عنوان الخدمة'}:</h3>
-            <p>${params.description || 'الوصف غير متوفر'}</p>
+            <h3> ${data.title || 'عنوان الخدمة'}:</h3>
+            <p>${data.description || 'الوصف غير متوفر'}</p>
           </div>`;
         } else {
           console.error('الـ index غير صالح أو البيانات مفقودة.');
