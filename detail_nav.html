@@ -229,6 +229,10 @@
       }
     }
 
+     // دالة لعرض تفاصيل المقالة
+  function showBlogDetails(index) {
+    window.location.href = `blog-detail.html?index=${index}`;
+  }
     window.onload = function() {
       loadServiceDetails();
       loadRelatedContent();
