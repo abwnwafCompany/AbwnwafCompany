@@ -138,31 +138,34 @@
     async function loadBlogDetails() {
       try {
         const response = await fetch('blogs.json');
-      const data = await response.json();
+        const data = await response.json();
+        
+        // جلب الـ index من الرابط
         const urlParams = new URLSearchParams(window.location.search);
         const index = parseInt(urlParams.get('index'), 10);
 
+        // التأكد من صحة البيانات
         if (Array.isArray(data) && !isNaN(index) && index >= 0 && index < data.length) {
-          const item = data[index];
+          const item = data[index];  // جلب المقالة المحددة من الـ index
           const blogDetailContainer = document.getElementById('blog-detail-container');
 
           blogDetailContainer.innerHTML = 
           `<div class="blog-image-container">
-            <img src="${data.image || 'img/five.jpg'}" alt="ابو نواف للدهانات وجميع انواع الديكورات">
-            <h1 class="blog-title">${data.title || 'عنوان المقال'}</h1>
+            <img src="${item.image || 'img/five.jpg'}" alt="ابو نواف للدهانات وجميع انواع الديكورات">
+            <h1 class="blog-title">${item.title || 'عنوان المقال'}</h1>
             <!-- شريط التنقل داخل الصورة -->
             <ul class="nav nav-tabs mt-5" dir="rtl">
               <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="tab" href="index.html">الرئسية</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="">${data.title || 'عنوان المقال'}</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#">${item.title || 'عنوان المقال'}</a>
               </li>
             </ul>
           </div>
           <div class="blog-content" dir="rtl">
-            <h3> ${data.title || 'عنوان المقال'}:</h3>
-            <p>${data.description || 'الوصف غير متوفر'}</p>
+            <h3> ${item.title || 'عنوان المقال'}:</h3>
+            <p>${item.description || 'الوصف غير متوفر'}</p>
           </div>`;
         } else {
           console.error('الـ index غير صالح أو البيانات مفقودة.');
@@ -171,6 +174,7 @@
         console.error('حدث خطأ في تحميل بيانات المقالة:', error);
       }
     }
+
     window.onload = function() {
       loadBlogDetails();
     };
