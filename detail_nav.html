@@ -121,7 +121,37 @@
         console.error('البيانات مفقودة أو غير صحيحة.');
       }
     }
+ // دالة لتحميل المحتوى المترابط
+  async function loadRelatedContent() {
+    try {
+      const response = await fetch('blogs.json');
+      const data = await response.json();
 
+      if (Array.isArray(data)) {
+        const firstFourItems = data.slice(0, 4);
+        const blogCardsContainer = document.getElementById('blog-cards-container');
+        const imageCardsContainer = document.getElementById('image-cards-container');
+
+        firstFourItems.forEach((item, index) => {
+          const blogCard = document.createElement('div');
+          blogCard.classList.add('blog-card', 'mb-4', 'text-end');
+          blogCard.innerHTML = `
+            <h6 class="text-dark">${item.title}</h6>
+            <p>${item.description}</p>
+            <a href="#" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
+          `;
+          blogCardsContainer.appendChild(blogCard);
+
+          const imageCard = document.createElement('div');
+          imageCard.classList.add('col-md-6', 'mb-4');
+          imageCard.innerHTML = `<a href="${item.image}" target="_blank"><img src="${item.image}" class="img-fluid rounded" style="cursor: pointer;"></a>`;
+          imageCardsContainer.appendChild(imageCard);
+        });
+      }
+    } catch (error) {
+      console.error("خطأ في تحميل المحتوى المترابط:", error);
+    }
+  }
     // تحميل تفاصيل الخدمة عند تحميل الصفحة
     window.onload = loadServiceDetails;
   </script>
