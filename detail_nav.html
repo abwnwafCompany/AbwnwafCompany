@@ -105,27 +105,55 @@
       margin-bottom: 20px;
     }
 
+    /* شريط التنقل */
+    .nav-tabs {
+      font-size: 1.2rem; /* زيادة حجم الخط */
+      background-color: #f8f9fa;
+      padding: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .nav-tabs .nav-link {
+      font-size: 1.4rem;
+      padding: 15px 25px;
+      text-align: center;
+    }
+
+    .nav-tabs .nav-link:hover {
+      background-color: #f0e68c;
+      border-radius: 5px;
+    }
+
+    .nav-tabs .nav-link.active {
+      background-color: #ff9900;
+      color: white;
+    }
   </style>
 </head>
 <body>
+  <!-- محتوى الخدمة -->
   <div id="blog-detail-container" dir="rtl">
     <!-- محتوى الخدمة سيظهر هنا -->
   </div>
- <section class="services bg-white" id="services" dir="rtl">
-<div class="container-fluid py-5">
-<div class="text-end p-4 mb-10" style="margin-top:40px;">
-<!-- Nav pills -->
-<ul class="nav nav-tabs mt-5">
-  <li class="nav-item">
-    <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئسية</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="">كل الخدمات</a>
-  </li>
-</ul>
-</div>
-</div>
-</section>
+
+  <!-- شريط التنقل -->
+  <section class="services bg-white" id="services" dir="rtl">
+    <div class="container-fluid py-5">
+      <div class="text-end p-4 mb-10" style="margin-top:40px;">
+        <!-- Nav pills -->
+        <ul class="nav nav-tabs mt-5">
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئيسية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="">كل الخدمات</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- قسم جديد: محتوى قد يهمك مع صور تظهر عند الضغط عليها -->
   <section id="related-content" class="py-5 bg-white">
     <div class="container">
