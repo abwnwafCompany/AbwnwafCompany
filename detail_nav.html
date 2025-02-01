@@ -152,8 +152,11 @@
       console.error("خطأ في تحميل المحتوى المترابط:", error);
     }
   }
-    // تحميل تفاصيل الخدمة عند تحميل الصفحة
-    window.onload = loadServiceDetails;
+
+     window.onload = function() {
+    loadServiceDetails();
+    loadRelatedContent();
+     };
   </script>
 
 </body>
