@@ -851,7 +851,7 @@ async function loadBlogData() {
 
     if (Array.isArray(data)) {
       const blogContent = document.getElementById('blog-content');
-      const maxLength = 200; // الحد الأقصى لعدد الأحرف لكل سطر (يمكنك تعديل هذا حسب الحاجة)
+      const maxLength =25; // الحد الأقصى لعدد الأحرف لكل سطر (يمكنك تعديل هذا حسب الحاجة)
       
       data.forEach((item, index) => {
         const article = document.createElement('div');
