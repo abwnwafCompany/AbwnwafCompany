@@ -203,14 +203,19 @@
 
           firstFourItems.forEach((item, index) => {
             const blogCard = document.createElement('div');
-            blogCard.classList.add('related-card');
-            blogCard.innerHTML = 
-              `<img src="${item.image}" alt="صورة المقال" />
-              <div class="card-body">
-                <h6>${item.title}</h6>
-                <p>${item.description}</p>
-                <a href="#" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
-              </div>`;
+           blogCard.classList.add('related-card');
+           blogCard.innerHTML = 
+         `<div class="d-flex align-items-center">
+    <!-- النص في الجهة اليسرى -->
+    <div class="card-body">
+      <h6>${item.title}</h6>
+      <p>${item.description}</p>
+      <a href="#" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
+    </div>
+    
+    <!-- الصورة في الجهة اليمنى -->
+    <img src="${item.image}" alt="صورة المقال" class="img-fluid rounded" style="width: 120px; height: 120px; object-fit: cover;"/>
+  </div>`;
             blogCardsContainer.appendChild(blogCard);
 
             const imageCard = document.createElement('div');
