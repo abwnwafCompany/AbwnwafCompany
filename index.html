@@ -353,17 +353,36 @@ display:none;
   .close-btn:hover {
     color: #f39c12;
   }
- /* استخدام Flexbox لعرض الصور جنبًا إلى جنب */
- #image-cards-container {
-    display: flex;
-    flex-wrap: wrap; /* يسمح باللف إذا كانت العناصر أكبر من الحاوية */
-    gap: 15px; /* المسافة بين الصور */
-  }
+  /* تنسيق المحتوى في الجزء "قد يهمك" مع عرض الصورة بجانب النص */
+    .related-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
 
-  /* التأكد من أن الصورة تأخذ نصف العرض */
-  #image-cards-container .col-md-6 {
-    flex: 0 0 48%; /* تأخذ 48% من العرض في كل صف */
-  }
+    .related-card img {
+      width: 80px; /* حجم الصورة صغير */
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .related-card .card-body {
+      flex-grow: 1;
+    }
+
+    /* تنسيق قسم "قد يهمك" */
+    #related-content h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    /* توسيع الجهة اليسرى لتأخذ عرض الشاشة كامل */
+    .col-lg-12 {
+      flex: 0 0 100%; /* جعل المحتوى في الجهة اليسرى يأخذ عرض الشاشة بالكامل */
+    }
+
 .zz {
   text-decoration: none;  /* إزالة الخط تحت الرابط */
 }
@@ -651,21 +670,20 @@ display:none;
 </section>
 <!-- end of لماذا تختارنا -->
 <!-- قسم جديد: محتوى قد يهمك مع صور تظهر عند الضغط عليها -->
-<section id="related-content" class="py-5 bg-light">
-  <div class="container">
-    <div class="row">
-      <!-- الجزء الأيسر: محتوى قد يهمك (مثل المدونات) -->
-      <div class="col-lg-6 col-md-12" id="blog-cards-container">
-        <!-- المقالات سيتم تحميلها هنا -->
-      </div>
-
-      <!-- الجزء الأيمن: صور قابلة للعرض عند الضغط عليها -->
-      <div class="col-lg-6 col-md-12" id="image-cards-container">
-        <!-- الصور سيتم تحميلها هنا -->
+ <!-- قسم جديد: محتوى قد يهمك مع صور تظهر عند الضغط عليها -->
+  <section id="related-content" class="py-5 bg-white">
+    <div class="container">
+      <div class="row">
+        <!-- الجزء الأيسر: نص "قد يهمك" في الجهة اليسرى من المحتوى -->
+        <div class="col-lg-12 col-md-12 d-flex flex-column align-items-end">
+          <h3>قد يهمك</h3> <!-- النص الذي ترغب في عرضه -->
+          <div id="blog-cards-container">
+            <!-- المقالات سيتم تحميلها هنا -->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 <!-- end of related-content -->
 <!-- news strats -->
 <section id="blogs" class="portfolio section-padding blogs" dir="rtl">
@@ -988,45 +1006,48 @@ async function loadBlogData() {
     }
   }
 
-// دالة لتحميل المحتوى المترابط
-async function loadRelatedContent() {
-  try {
-    const response = await fetch('blogs.json');
-    const data = await response.json();
+ // دالة لتحميل المحتوى المترابط
+    async function loadRelatedContent() {
+      try {
+        const response = await fetch('blogs.json');
+        const data = await response.json();
 
-    if (Array.isArray(data)) {
-      const firstFourItems = data.slice(0, 4);
-      const blogCardsContainer = document.getElementById('blog-cards-container');
-      const imageCardsContainer = document.getElementById('image-cards-container');
+        if (Array.isArray(data)) {
+          const firstFourItems = data.slice(0, 4);
+          const blogCardsContainer = document.getElementById('blog-cards-container');
+          
+          const maxLength = 100; // الحد الأقصى لعدد الأحرف لكل سطر (يمكنك تعديله)
 
-      firstFourItems.forEach((item, index) => {
-        const blogCard = document.createElement('div');
-        blogCard.classList.add('blog-card', 'mb-4', 'text-end');
-        
-        // تقليص النص إلى سطرين فقط
-        const maxLength = 200; // الحد الأقصى لعدد الأحرف (افتراضيًا 200 حرف لكل سطر)
-        let description = item.description;
-        if (description.length > maxLength) {
-          description = description.substring(0, maxLength) + '...';
+          firstFourItems.forEach((item, index) => {
+            const blogCard = document.createElement('div');
+            blogCard.classList.add('related-card');
+            
+            // تقليص النص إلى سطرين فقط
+            let description = item.description || 'وصف غير متوفر';
+            if (description.length > maxLength) {
+              description = description.substring(0, maxLength) + '...';
+            }
+            
+            blogCard.innerHTML = `
+              <div class="d-flex align-items-center">
+                <!-- النص في الجهة اليسرى -->
+                <div class="card-body">
+                  <h6>${item.title}</h6>
+                  <p>${description}</p>
+                  <a href="#nn" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
+                </div>
+                
+                <!-- الصورة في الجهة اليمنى -->
+                <img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover;"/>
+              </div>`;
+            
+            blogCardsContainer.appendChild(blogCard);
+          });
         }
-
-        blogCard.innerHTML = `
-          <h6 class="text-dark">${item.title}</h6>
-          <p>${description}</p>
-          <a href="#hg" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
-        `;
-        blogCardsContainer.appendChild(blogCard);
-
-        const imageCard = document.createElement('div');
-        imageCard.classList.add('col-md-6', 'mb-4');
-        imageCard.innerHTML = `<a href="${item.image}" target="_blank"><img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded responsive-img" style="cursor: pointer;"></a>`;
-        imageCardsContainer.appendChild(imageCard);
-      });
+      } catch (error) {
+        console.error("خطأ في تحميل المحتوى المترابط:", error);
+      }
     }
-  } catch (error) {
-    console.error("خطأ في تحميل المحتوى المترابط:", error);
-  }
-}
 
   // دالة لتحميل معلومات التواصل
   async function loadContactInfo() {
