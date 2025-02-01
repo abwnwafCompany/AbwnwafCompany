@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
@@ -105,38 +104,14 @@
       margin-bottom: 20px;
     }
 
-    /* شريط التنقل */
+    /* تخصيص تنسيق شريط التنقل */
     .nav-tabs {
-      font-size: 1.2rem; /* زيادة حجم الخط */
-      background-color: #f8f9fa;
-      padding: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ddd;
+      margin-bottom: 30px;
     }
 
-    .nav-tabs .nav-link {
-      font-size: 1.4rem;
-      padding: 15px 25px;
-      text-align: center;
-    }
-
-    .nav-tabs .nav-link:hover {
-      background-color: #f0e68c;
-      border-radius: 5px;
-    }
-
-    .nav-tabs .nav-link.active {
-      background-color: #ff9900;
-      color: white;
-    }
   </style>
 </head>
 <body>
-  <!-- محتوى الخدمة -->
-  <div id="blog-detail-container" dir="rtl">
-    <!-- محتوى الخدمة سيظهر هنا -->
-  </div>
-
   <!-- شريط التنقل -->
   <section class="services bg-white" id="services" dir="rtl">
     <div class="container-fluid py-5">
@@ -144,7 +119,7 @@
         <!-- Nav pills -->
         <ul class="nav nav-tabs mt-5">
           <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئيسية</a>
+            <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئسية</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="tab" href="">كل الخدمات</a>
@@ -153,6 +128,10 @@
       </div>
     </div>
   </section>
+
+  <div id="blog-detail-container" dir="rtl">
+    <!-- محتوى الخدمة سيظهر هنا -->
+  </div>
 
   <!-- قسم جديد: محتوى قد يهمك مع صور تظهر عند الضغط عليها -->
   <section id="related-content" class="py-5 bg-white">
@@ -190,8 +169,8 @@
       if (params.title && params.description && params.image) {
         const blogDetailContainer = document.getElementById('blog-detail-container');
 
-        blogDetailContainer.innerHTML = `
-          <div class="blog-image-container">
+        blogDetailContainer.innerHTML = 
+          `<div class="blog-image-container">
             <img src="${params.image || 'img/five.jpg'}" alt="صورة الخدمة">
             <h1 class="blog-title">${params.title || 'عنوان الخدمة'}</h1>
           </div>
@@ -199,8 +178,7 @@
             <h3>تفاصيل الخدمة:</h3>
             <p>${params.description || 'الوصف غير متوفر'}</p>
             <button class="back-btn" onclick="window.history.back()">العودة إلى القائمة</button>
-          </div>
-        `;
+          </div>`;
       } else {
         console.error('البيانات مفقودة أو غير صحيحة.');
       }
@@ -220,14 +198,13 @@
           firstFourItems.forEach((item, index) => {
             const blogCard = document.createElement('div');
             blogCard.classList.add('related-card');
-            blogCard.innerHTML = `
-              <img src="${item.image}" alt="صورة المقال" />
+            blogCard.innerHTML = 
+              `<img src="${item.image}" alt="صورة المقال" />
               <div class="card-body">
                 <h6>${item.title}</h6>
                 <p>${item.description}</p>
                 <a href="#" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
-              </div>
-            `;
+              </div>`;
             blogCardsContainer.appendChild(blogCard);
 
             const imageCard = document.createElement('div');
