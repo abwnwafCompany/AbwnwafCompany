@@ -92,21 +92,16 @@
       background-color: #e68900;
     }
 
-    /* إزالة الجهة اليمنى الخاصة بالصور في المحتوى المترابط */
-    #image-cards-container {
-      display: none; /* إخفاء الصور */
-    }
-
     /* تنسيق المحتوى في الجزء "قد يهمك" مع عرض الصورة بجانب النص */
     .related-card {
       display: flex;
-      align-items: right;
+      align-items: center;
       gap: 15px;
       margin-bottom: 20px;
     }
 
     .related-card img {
-      width: 80px;
+      width: 80px; /* حجم الصورة صغير */
       height: 80px;
       object-fit: cover;
       border-radius: 5px;
@@ -123,7 +118,7 @@
     }
 
     /* توسيع الجهة اليسرى لتأخذ عرض الشاشة كامل */
-    .col-lg-6 {
+    .col-lg-12 {
       flex: 0 0 100%; /* جعل المحتوى في الجهة اليسرى يأخذ عرض الشاشة بالكامل */
     }
 
@@ -145,11 +140,6 @@
           <div id="blog-cards-container">
             <!-- المقالات سيتم تحميلها هنا -->
           </div>
-        </div>
-
-        <!-- إخفاء الجزء الأيمن الذي يحتوي على الصور -->
-        <div class="col-lg-6 col-md-12" id="image-cards-container">
-          <!-- الصور سيتم تحميلها هنا -->
         </div>
       </div>
     </div>
@@ -224,6 +214,9 @@
                   <p>${description}</p>
                   <a href="#nn" class="btn btn-warning" onclick="showBlogDetails(${index})">اقرأ المزيد</a>
                 </div>
+                
+                <!-- الصورة في الجهة اليمنى -->
+                <img src="${item.image}" alt="ابو نواف للدهانات وجميع انواع الديكورات" class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover;"/>
               </div>`;
             
             blogCardsContainer.appendChild(blogCard);
