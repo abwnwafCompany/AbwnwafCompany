@@ -813,7 +813,7 @@ function open_ser(evt, cityName) {
   // دالة لتحميل البيانات الخاصة بالسلايدر (الخدمات)
   async function loadSliderData() {
     try {
-      const response = await fetch('services.json');
+      const response = await fetch('header_item.json');
       const data = await response.json();
 
       if (Array.isArray(data)) {
