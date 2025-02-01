@@ -29,6 +29,26 @@
       color: white;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
       text-align: center;
+      z-index: 1; /* للتأكد من ظهور العنوان فوق الصورة */
+    }
+
+    /* تخصيص شريط التنقل ليظهر فوق الصورة */
+    .nav-tabs {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 2; /* شريط التنقل يظهر فوق الصورة */
+      background-color: rgba(255, 255, 255, 0.7); /* خلفية خفيفة لضمان وضوح الروابط */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .nav-link {
+      color: #333;
+    }
+
+    .nav-link.active {
+      color: #ff9900;
     }
 
     .blog-content {
@@ -104,15 +124,10 @@
       margin-bottom: 20px;
     }
 
-    /* تخصيص تنسيق شريط التنقل */
-    .nav-tabs {
-      margin-bottom: 30px;
-    }
-
   </style>
 </head>
 <body>
-  <!-- شريط التنقل -->
+  <!-- شريط التنقل داخل الصورة -->
   <section class="services bg-white" id="services" dir="rtl">
     <div class="container-fluid py-5">
       <div class="text-end p-4 mb-10" style="margin-top:40px;">
@@ -173,6 +188,15 @@
           `<div class="blog-image-container">
             <img src="${params.image || 'img/five.jpg'}" alt="صورة الخدمة">
             <h1 class="blog-title">${params.title || 'عنوان الخدمة'}</h1>
+            <!-- شريط التنقل داخل الصورة -->
+            <ul class="nav nav-tabs mt-5">
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="index.php">الرئسية</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="">كل الخدمات</a>
+              </li>
+            </ul>
           </div>
           <div class="blog-content">
             <h3>تفاصيل الخدمة:</h3>
