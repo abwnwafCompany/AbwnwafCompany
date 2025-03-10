@@ -12,5 +12,12 @@
         "price": "11",
         "category": "عريكة",
         "timestamp": "2025-03-11 00:12:39"
+    },
+    {
+        "food_name": "وجبه",
+        "images": "https:\/\/i.postimg.cc\/d0Yq5yKL",
+        "price": "15",
+        "category": "مطبق",
+        "timestamp": "2025-03-11 00:13:48"
     }
 ]
