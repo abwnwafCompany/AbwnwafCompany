@@ -1,16 +1,9 @@
 [
     {
-        "food_name": "اسم ",
+        "food_name": "\u0627\u0633\u0645 ",
         "images": "https:\/\/i.postimg.cc\/d0Yq5yKL\/image.png",
         "price": "20",
-        "category": "معصوب",
+        "category": "\u0645\u0639\u0635\u0648\u0628",
         "timestamp": "2025-03-10 23:39:27"
-    },
-    {
-        "food_name": "اي وجبة",
-        "images": "https:\/\/i.postimg.cc\/d0Yq5yKL\/image.png",
-        "price": "15",
-        "category": "فول",
-        "timestamp": "2025-03-10 23:43:48"
     }
 ]
