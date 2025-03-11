@@ -1,37 +1,30 @@
 [
     {
-        "food_name": "اسم ",
+        "food_name": "\u0627\u0633\u0645 ",
         "images": "https:\/\/i.postimg.cc\/d0Yq5yKL\/image.png",
         "price": "20",
-        "category": "اصناف مميزة",
+        "category": "\u0627\u0635\u0646\u0627\u0641 \u0645\u0645\u064a\u0632\u0629",
         "timestamp": "2025-03-11 00:43:40"
     },
     {
-        "food_name": "وجبه",
+        "food_name": "\u0648\u062c\u0628\u0647",
         "images": "https:\/\/i.postimg.cc\/9Xtybd5q\/1740780789282.jpg",
         "price": "11",
-        "category": "عريكة",
+        "category": "\u0639\u0631\u064a\u0643\u0629",
         "timestamp": "2025-03-11 00:12:39"
     },
     {
-        "food_name": "وجبه",
-        "images": "https:\/\/i.postimg.cc\/d0Yq5yKL",
-        "price": "15",
-        "category": "مطبق",
-        "timestamp": "2025-03-11 00:13:48"
-    },
-    {
-        "food_name": "بببببببب",
+        "food_name": "\u0628\u0628\u0628\u0628\u0628\u0628\u0628\u0628",
         "images": "https:\/\/i.postimg.cc\/9Xtybd5q\/1740780789282.jpg",
         "price": "20",
-        "category": "اصناف مميزة",
+        "category": "\u0627\u0635\u0646\u0627\u0641 \u0645\u0645\u064a\u0632\u0629",
         "timestamp": "2025-03-11 00:16:04"
     },
     {
-        "food_name": "تتتت",
+        "food_name": "\u062a\u062a\u062a\u062a",
         "images": "https:\/\/i.postimg.cc\/9Xtybd5q\/1740780789282.jpg",
         "price": "20",
-        "category": "اصناف مميزة",
+        "category": "\u0627\u0635\u0646\u0627\u0641 \u0645\u0645\u064a\u0632\u0629",
         "timestamp": "2025-03-11 00:17:20"
     }
 ]
